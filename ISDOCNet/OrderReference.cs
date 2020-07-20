@@ -134,6 +134,7 @@ namespace ISDOCNet
             }
         }
 
+        [XmlAttribute]
         public string id
         {
             get

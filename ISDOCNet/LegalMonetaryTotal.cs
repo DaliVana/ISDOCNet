@@ -5,44 +5,49 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private decimal _taxExclusiveAmount;
+        private decimal? _taxExclusiveAmount;
 
-        private decimal _taxExclusiveAmountCurr;
+        private decimal? _taxExclusiveAmountCurr;
 
-        private decimal _taxInclusiveAmount;
+        private decimal? _taxInclusiveAmount;
 
-        private decimal _taxInclusiveAmountCurr;
+        private decimal? _taxInclusiveAmountCurr;
 
-        private decimal _alreadyClaimedTaxExclusiveAmount;
+        private decimal? _alreadyClaimedTaxExclusiveAmount;
 
-        private decimal _alreadyClaimedTaxExclusiveAmountCurr;
+        private decimal? _alreadyClaimedTaxExclusiveAmountCurr;
 
-        private decimal _alreadyClaimedTaxInclusiveAmount;
+        private decimal? _alreadyClaimedTaxInclusiveAmount;
 
-        private decimal _alreadyClaimedTaxInclusiveAmountCurr;
+        private decimal? _alreadyClaimedTaxInclusiveAmountCurr;
 
-        private decimal _differenceTaxExclusiveAmount;
+        private decimal? _differenceTaxExclusiveAmount;
 
-        private decimal _differenceTaxExclusiveAmountCurr;
+        private decimal? _differenceTaxExclusiveAmountCurr;
 
-        private decimal _differenceTaxInclusiveAmount;
+        private decimal? _differenceTaxInclusiveAmount;
 
-        private decimal _differenceTaxInclusiveAmountCurr;
+        private decimal? _differenceTaxInclusiveAmountCurr;
 
-        private decimal _payableRoundingAmount;
+        private decimal? _payableRoundingAmount;
 
-        private decimal _payableRoundingAmountCurr;
+        private decimal? _payableRoundingAmountCurr;
 
-        private decimal _paidDepositsAmount;
+        private decimal? _paidDepositsAmount;
 
-        private decimal _paidDepositsAmountCurr;
+        private decimal? _paidDepositsAmountCurr;
 
-        private decimal _payableAmount;
+        private decimal? _payableAmount;
 
-        private decimal _payableAmountCurr;
+        private decimal? _payableAmountCurr;
         #endregion
 
-        public decimal TaxExclusiveAmount
+        public bool ShouldSerializeTaxExclusiveAmount()
+        {
+            return _taxExclusiveAmount != null;
+        }
+
+        public decimal? TaxExclusiveAmount
         {
             get
             {
@@ -54,7 +59,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxExclusiveAmountCurr
+        public bool ShouldSerializeTaxExclusiveAmountCurr()
+        {
+            return _taxExclusiveAmountCurr != null;
+        }
+
+        public decimal? TaxExclusiveAmountCurr
         {
             get
             {
@@ -66,7 +76,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxInclusiveAmount
+        public bool ShouldSerializeTaxInclusiveAmount()
+        {
+            return _taxInclusiveAmount != null;
+        }
+
+        public decimal? TaxInclusiveAmount
         {
             get
             {
@@ -78,7 +93,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxInclusiveAmountCurr
+        public bool ShouldSerializeTaxInclusiveAmountCurr()
+        {
+            return _taxInclusiveAmountCurr != null;
+        }
+
+        public decimal? TaxInclusiveAmountCurr
         {
             get
             {
@@ -90,7 +110,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxExclusiveAmount
+        public bool ShouldSerializeAlreadyClaimedTaxExclusiveAmount()
+        {
+            return _alreadyClaimedTaxExclusiveAmount != null;
+        }
+
+        public decimal? AlreadyClaimedTaxExclusiveAmount
         {
             get
             {
@@ -102,7 +127,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxExclusiveAmountCurr
+        public bool ShouldSerializeAlreadyClaimedTaxExclusiveAmountCurr()
+        {
+            return _alreadyClaimedTaxExclusiveAmountCurr != null;
+        }
+
+        public decimal? AlreadyClaimedTaxExclusiveAmountCurr
         {
             get
             {
@@ -114,7 +144,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxInclusiveAmount
+        public bool ShouldSerializeAlreadyClaimedTaxInclusiveAmount()
+        {
+            return _alreadyClaimedTaxInclusiveAmount != null;
+        }
+
+        public decimal? AlreadyClaimedTaxInclusiveAmount
         {
             get
             {
@@ -126,7 +161,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxInclusiveAmountCurr
+        public bool ShouldSerializeAlreadyClaimedTaxInclusiveAmountCurr()
+        {
+            return _alreadyClaimedTaxInclusiveAmountCurr != null;
+        }
+
+        public decimal? AlreadyClaimedTaxInclusiveAmountCurr
         {
             get
             {
@@ -138,7 +178,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxExclusiveAmount
+        public bool ShouldSerializeDifferenceTaxExclusiveAmount()
+        {
+            return _differenceTaxExclusiveAmount != null;
+        }
+
+        public decimal? DifferenceTaxExclusiveAmount
         {
             get
             {
@@ -150,7 +195,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxExclusiveAmountCurr
+        public bool ShouldSerializeDifferenceTaxExclusiveAmountCurr()
+        {
+            return _differenceTaxExclusiveAmountCurr != null;
+        }
+
+        public decimal? DifferenceTaxExclusiveAmountCurr
         {
             get
             {
@@ -162,7 +212,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxInclusiveAmount
+        public bool ShouldSerializeDifferenceTaxInclusiveAmount()
+        {
+            return _differenceTaxInclusiveAmount != null;
+        }
+
+        public decimal? DifferenceTaxInclusiveAmount
         {
             get
             {
@@ -174,7 +229,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxInclusiveAmountCurr
+        public bool ShouldSerializeDifferenceTaxInclusiveAmountCurr()
+        {
+            return _differenceTaxInclusiveAmountCurr != null;
+        }
+
+        public decimal? DifferenceTaxInclusiveAmountCurr
         {
             get
             {
@@ -186,7 +246,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PayableRoundingAmount
+        public bool ShouldSerializePayableRoundingAmount()
+        {
+            return _payableRoundingAmount != null;
+        }
+
+        public decimal? PayableRoundingAmount
         {
             get
             {
@@ -198,7 +263,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PayableRoundingAmountCurr
+        public bool ShouldSerializePayableRoundingAmountCurr()
+        {
+            return _payableRoundingAmountCurr != null;
+        }
+
+        public decimal? PayableRoundingAmountCurr
         {
             get
             {
@@ -210,7 +280,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PaidDepositsAmount
+        public bool ShouldSerializePaidDepositsAmount()
+        {
+            return _paidDepositsAmount != null;
+        }
+
+        public decimal? PaidDepositsAmount
         {
             get
             {
@@ -222,7 +297,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PaidDepositsAmountCurr
+        public bool ShouldSerializePaidDepositsAmountCurr()
+        {
+            return _paidDepositsAmountCurr != null;
+        }
+
+        public decimal? PaidDepositsAmountCurr
         {
             get
             {
@@ -234,7 +314,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PayableAmount
+        public bool ShouldSerializePayableAmount()
+        {
+            return _payableAmount != null;
+        }
+
+        public decimal? PayableAmount
         {
             get
             {
@@ -246,7 +331,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal PayableAmountCurr
+        public bool ShouldSerializePayableAmountCurr()
+        {
+            return _payableAmountCurr != null;
+        }
+
+        public decimal? PayableAmountCurr
         {
             get
             {

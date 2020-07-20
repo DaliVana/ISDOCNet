@@ -1,6 +1,8 @@
+using System.Xml.Serialization;
+
 namespace ISDOCNet
 {
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     public partial class Quantity
     {
 
@@ -10,6 +12,7 @@ namespace ISDOCNet
         private decimal _value;
         #endregion
 
+        [XmlAttribute]
         public string unitCode
         {
             get
@@ -22,6 +25,7 @@ namespace ISDOCNet
             }
         }
 
+        [XmlText]
         public decimal Value
         {
             get

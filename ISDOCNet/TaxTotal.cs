@@ -1,25 +1,31 @@
 namespace ISDOCNet
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class TaxTotal
     {
 
         #region Private fields
-        private List<TaxSubTotal> _taxSubTotal;
+        private TaxSubTotal _taxSubTotal;
 
-        private decimal _taxAmountCurr;
+        private decimal? _taxAmountCurr;
 
-        private decimal _taxAmount;
+        private decimal? _taxAmount;
         #endregion
 
         public TaxTotal()
         {
-            this._taxSubTotal = new List<TaxSubTotal>();
+            //this._taxSubTotal = new List<TaxSubTotal>();
         }
 
-        public List<TaxSubTotal> TaxSubTotal
+        public bool ShouldSerializeTaxSubTotal()
+        {
+            return _taxSubTotal != null;
+        }
+
+        public TaxSubTotal TaxSubTotal
         {
             get
             {
@@ -31,7 +37,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxAmountCurr
+        public bool ShouldSerializeTaxAmountCurr()
+        {
+            return _taxAmountCurr != null;
+        }
+
+        public decimal? TaxAmountCurr
         {
             get
             {
@@ -43,7 +54,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxAmount
+        public bool ShouldSerializeTaxAmount()
+        {
+            return _taxAmount != null;
+        }
+
+        public decimal? TaxAmount
         {
             get
             {

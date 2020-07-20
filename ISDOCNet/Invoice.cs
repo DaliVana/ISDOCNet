@@ -595,7 +595,7 @@ namespace ISDOCNet
 
         public bool ShouldSerializeOrderReferences()
         {
-            return _orderReferences != null && _originalDocumentReferences.Any();
+            return _orderReferences != null && _orderReferences.Any();
         }
 
         public List<OrderReference> OrderReferences

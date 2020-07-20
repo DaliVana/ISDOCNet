@@ -12,7 +12,7 @@ namespace ISDOCNet
 
         private PostalAddress _postalAddress;
 
-        private List<PartyTaxScheme> _partyTaxScheme;
+        private PartyTaxScheme _partyTaxScheme;
 
         private RegisterIdentification _registerIdentification;
 
@@ -82,10 +82,10 @@ namespace ISDOCNet
 
         public bool ShouldSerializePartyTaxScheme()
         {
-            return _partyTaxScheme != null && _partyTaxScheme.Count > 0;
+            return _partyTaxScheme != null;
         }
 
-        public List<PartyTaxScheme> PartyTaxScheme
+        public PartyTaxScheme PartyTaxScheme
         {
             get
             {
@@ -99,7 +99,7 @@ namespace ISDOCNet
 
         public bool ShouldSerializeRegisterIdentification()
         {
-            return _registerIdentification != null && _registerIdentification.Items != null;
+            return _registerIdentification != null;
         }
 
         public RegisterIdentification RegisterIdentification

@@ -5,51 +5,56 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private decimal _taxableAmountCurr;
+        private decimal? _taxableAmountCurr;
 
-        private decimal _taxableAmount;
+        private decimal? _taxableAmount;
 
-        private decimal _taxAmountCurr;
+        private decimal? _taxAmountCurr;
 
-        private decimal _taxAmount;
+        private decimal? _taxAmount;
 
-        private decimal _taxInclusiveAmountCurr;
+        private decimal? _taxInclusiveAmountCurr;
 
-        private decimal _taxInclusiveAmount;
+        private decimal? _taxInclusiveAmount;
 
-        private decimal _alreadyClaimedTaxableAmountCurr;
+        private decimal? _alreadyClaimedTaxableAmountCurr;
 
-        private decimal _alreadyClaimedTaxableAmount;
+        private decimal? _alreadyClaimedTaxableAmount;
 
-        private decimal _alreadyClaimedTaxAmountCurr;
+        private decimal? _alreadyClaimedTaxAmountCurr;
 
-        private decimal _alreadyClaimedTaxAmount;
+        private decimal? _alreadyClaimedTaxAmount;
 
-        private decimal _alreadyClaimedTaxInclusiveAmountCurr;
+        private decimal? _alreadyClaimedTaxInclusiveAmountCurr;
 
-        private decimal _alreadyClaimedTaxInclusiveAmount;
+        private decimal? _alreadyClaimedTaxInclusiveAmount;
 
-        private decimal _differenceTaxableAmountCurr;
+        private decimal? _differenceTaxableAmountCurr;
 
-        private decimal _differenceTaxableAmount;
+        private decimal? _differenceTaxableAmount;
 
-        private decimal _differenceTaxAmountCurr;
+        private decimal? _differenceTaxAmountCurr;
 
-        private decimal _differenceTaxAmount;
+        private decimal? _differenceTaxAmount;
 
-        private decimal _differenceTaxInclusiveAmountCurr;
+        private decimal? _differenceTaxInclusiveAmountCurr;
 
-        private decimal _differenceTaxInclusiveAmount;
+        private decimal? _differenceTaxInclusiveAmount;
 
         private TaxCategory _taxCategory;
         #endregion
 
         public TaxSubTotal()
         {
-            this._taxCategory = new TaxCategory();
+            //this._taxCategory = new TaxCategory();
         }
 
-        public decimal TaxableAmountCurr
+        public bool ShouldSerializeTaxableAmountCurr()
+        {
+            return _taxableAmountCurr != null;
+        }
+
+        public decimal? TaxableAmountCurr
         {
             get
             {
@@ -61,7 +66,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxableAmount
+        public bool ShouldSerializeTaxableAmount()
+        {
+            return _taxableAmount != null;
+        }
+
+        public decimal? TaxableAmount
         {
             get
             {
@@ -73,7 +83,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxAmountCurr
+        public bool ShouldSerializeTaxAmountCurr()
+        {
+            return _taxAmountCurr != null;
+        }
+
+        public decimal? TaxAmountCurr
         {
             get
             {
@@ -85,7 +100,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxAmount
+        public bool ShouldSerializeTaxAmount()
+        {
+            return _taxAmount != null;
+        }
+
+        public decimal? TaxAmount
         {
             get
             {
@@ -97,7 +117,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxInclusiveAmountCurr
+        public bool ShouldSerializeTaxInclusiveAmountCurr()
+        {
+            return _taxInclusiveAmountCurr != null;
+        }
+
+        public decimal? TaxInclusiveAmountCurr
         {
             get
             {
@@ -109,7 +134,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal TaxInclusiveAmount
+        public bool ShouldSerializeTaxInclusiveAmount()
+        {
+            return _taxInclusiveAmount != null;
+        }
+
+        public decimal? TaxInclusiveAmount
         {
             get
             {
@@ -121,7 +151,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxableAmountCurr
+        public bool ShouldSerializeAlreadyClaimedTaxableAmountCurr()
+        {
+            return _alreadyClaimedTaxableAmountCurr != null;
+        }
+
+        public decimal? AlreadyClaimedTaxableAmountCurr
         {
             get
             {
@@ -133,7 +168,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxableAmount
+        public bool ShouldSerializeAlreadyClaimedTaxableAmount()
+        {
+            return _alreadyClaimedTaxableAmount != null;
+        }
+
+        public decimal? AlreadyClaimedTaxableAmount
         {
             get
             {
@@ -144,8 +184,12 @@ namespace ISDOCNet
                 this._alreadyClaimedTaxableAmount = value;
             }
         }
+        public bool ShouldSerializeAlreadyClaimedTaxAmountCurr()
+        {
+            return _alreadyClaimedTaxAmountCurr != null;
+        }
 
-        public decimal AlreadyClaimedTaxAmountCurr
+        public decimal? AlreadyClaimedTaxAmountCurr
         {
             get
             {
@@ -157,7 +201,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxAmount
+        public bool ShouldSerializeAlreadyClaimedTaxAmount()
+        {
+            return _alreadyClaimedTaxAmount != null;
+        }
+
+        public decimal? AlreadyClaimedTaxAmount
         {
             get
             {
@@ -169,7 +218,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxInclusiveAmountCurr
+        public bool ShouldSerializeAlreadyClaimedTaxInclusiveAmountCurr()
+        {
+            return _alreadyClaimedTaxInclusiveAmountCurr != null;
+        }
+
+        public decimal? AlreadyClaimedTaxInclusiveAmountCurr
         {
             get
             {
@@ -181,7 +235,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal AlreadyClaimedTaxInclusiveAmount
+        public bool ShouldSerializeAlreadyClaimedTaxInclusiveAmount()
+        {
+            return _alreadyClaimedTaxInclusiveAmount != null;
+        }
+
+        public decimal? AlreadyClaimedTaxInclusiveAmount
         {
             get
             {
@@ -193,7 +252,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxableAmountCurr
+        public bool ShouldSerializeDifferenceTaxableAmountCurr()
+        {
+            return _differenceTaxableAmountCurr != null;
+        }
+
+        public decimal? DifferenceTaxableAmountCurr
         {
             get
             {
@@ -205,7 +269,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxableAmount
+        public bool ShouldSerializeDifferenceTaxableAmount()
+        {
+            return _differenceTaxableAmount != null; ;
+        }
+
+        public decimal? DifferenceTaxableAmount
         {
             get
             {
@@ -217,7 +286,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxAmountCurr
+        public bool ShouldSerializeDifferenceTaxAmountCurr()
+        {
+            return _differenceTaxAmountCurr != null;
+        }
+
+        public decimal? DifferenceTaxAmountCurr
         {
             get
             {
@@ -229,7 +303,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxAmount
+        public bool ShouldSerializeDifferenceTaxAmount()
+        {
+            return _differenceTaxAmount != null;
+        }
+
+        public decimal? DifferenceTaxAmount
         {
             get
             {
@@ -241,7 +320,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxInclusiveAmountCurr
+        public bool ShouldSerializeDifferenceTaxInclusiveAmountCurr()
+        {
+            return _differenceTaxInclusiveAmountCurr != null;
+        }
+
+        public decimal? DifferenceTaxInclusiveAmountCurr
         {
             get
             {
@@ -253,7 +337,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal DifferenceTaxInclusiveAmount
+        public bool ShouldSerializeDifferenceTaxInclusiveAmount()
+        {
+            return _differenceTaxInclusiveAmount != null;
+        }
+
+        public decimal? DifferenceTaxInclusiveAmount
         {
             get
             {
@@ -263,6 +352,11 @@ namespace ISDOCNet
             {
                 this._differenceTaxInclusiveAmount = value;
             }
+        }
+
+        public bool ShouldSerializeTaxCategory()
+        {
+            return _taxCategory != null;
         }
 
         public TaxCategory TaxCategory

@@ -1,3 +1,6 @@
+using System.Linq;
+using System.Xml.Serialization;
+
 namespace ISDOCNet
 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5,7 +8,7 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private decimal _paidAmount;
+        private decimal? _paidAmount;
 
         private PaymentMeansCode _paymentMeansCode;
 
@@ -16,10 +19,15 @@ namespace ISDOCNet
 
         public Payment()
         {
-            this._details = new Details();
+            //this._details = new Details();
         }
 
-        public decimal PaidAmount
+        public bool ShouldSerializePaidAmount()
+        {
+            return _paidAmount != null;
+        }
+
+        public decimal? PaidAmount
         {
             get
             {
@@ -29,6 +37,11 @@ namespace ISDOCNet
             {
                 this._paidAmount = value;
             }
+        }
+
+        public bool ShouldSerializePaymentMeansCode()
+        {
+            return _paymentMeansCode != null;
         }
 
         public PaymentMeansCode PaymentMeansCode
@@ -43,6 +56,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeDetails()
+        {
+            return _details != null;
+        }
+
         public Details Details
         {
             get
@@ -55,6 +73,7 @@ namespace ISDOCNet
             }
         }
 
+        [XmlAttribute]
         public bool partialPayment
         {
             get

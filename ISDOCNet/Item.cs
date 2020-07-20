@@ -1,6 +1,7 @@
 namespace ISDOCNet
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class Item
@@ -133,7 +134,7 @@ namespace ISDOCNet
 
         public bool ShouldSerializeStoreBatches()
         {
-            return _storeBatches != null;
+            return _storeBatches != null && _storeBatches.Any();  
         }
 
         public List<StoreBatch> StoreBatches

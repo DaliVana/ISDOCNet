@@ -5,32 +5,81 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private object[] _items;
+        private string _preformatted;
 
-        private ItemsChoice[] _itemsElementName;
+        private string _registerDate;
+
+        private string _registerFileRef;
+
+        private string _registerKeptAt;
+
         #endregion
 
-        public object[] Items
+        public bool ShouldSerializePreformatted()
+        {
+            return _preformatted != null;
+        }
+
+        public string Preformatted
         {
             get
             {
-                return this._items;
+                return this._preformatted;
             }
             set
             {
-                this._items = value;
+                this._preformatted = value;
             }
         }
 
-        public ItemsChoice[] ItemsElementName
+        public bool ShouldSerializeRegisterDate()
+        {
+            return _registerDate != null;
+        }
+
+        public string RegisterDate
         {
             get
             {
-                return this._itemsElementName;
+                return this._registerDate;
             }
             set
             {
-                this._itemsElementName = value;
+                this._registerDate = value;
+            }
+        }
+
+        public bool ShouldSerializeRegisterFileRef()
+        {
+            return _registerFileRef != null;
+        }
+
+        public string RegisterFileRef
+        {
+            get
+            {
+                return this._registerFileRef;
+            }
+            set
+            {
+                this._registerFileRef = value;
+            }
+        }
+
+        public bool ShouldSerializeRegisterKeptAt()
+        {
+            return _registerKeptAt != null;
+        }
+
+        public string RegisterKeptAt
+        {
+            get
+            {
+                return this._registerKeptAt;
+            }
+            set
+            {
+                this._registerKeptAt = value;
             }
         }
     }

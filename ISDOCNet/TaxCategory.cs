@@ -5,16 +5,21 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private decimal _percent;
+        private decimal? _percent;
 
         private string _taxScheme;
 
-        private bool _vATApplicable;
+        private bool? _vATApplicable;
 
-        private bool _localReverseChargeFlag;
+        private bool? _localReverseChargeFlag;
         #endregion
 
-        public decimal Percent
+        public bool ShouldSerializePercent()
+        {
+            return _percent != null;
+        }
+
+        public decimal? Percent
         {
             get
             {
@@ -24,6 +29,11 @@ namespace ISDOCNet
             {
                 this._percent = value;
             }
+        }
+
+        public bool ShouldSerializTaxScheme()
+        {
+            return _taxScheme != null;
         }
 
         public string TaxScheme
@@ -38,7 +48,12 @@ namespace ISDOCNet
             }
         }
 
-        public bool VATApplicable
+        public bool ShouldSerializeVATApplicable()
+        {
+            return _vATApplicable != null;
+        }
+
+        public bool? VATApplicable
         {
             get
             {
@@ -50,7 +65,12 @@ namespace ISDOCNet
             }
         }
 
-        public bool LocalReverseChargeFlag
+        public bool ShouldSerializeLocalReverseChargeFlag()
+        {
+            return _localReverseChargeFlag != null;
+        }
+
+        public bool? LocalReverseChargeFlag
         {
             get
             {
