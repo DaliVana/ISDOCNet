@@ -1,6 +1,6 @@
 namespace ISDOCNet
 {
-    public enum Document
+    public enum DocumentType
     {
 
         /// <remarks/>

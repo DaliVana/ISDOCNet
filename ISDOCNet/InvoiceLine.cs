@@ -2,7 +2,6 @@ using System;
 
 namespace ISDOCNet
 {
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [Serializable]
     public partial class InvoiceLine
     {
@@ -22,23 +21,23 @@ namespace ISDOCNet
 
         private Quantity _invoicedQuantity;
 
-        private decimal _lineExtensionAmountCurr;
+        private decimal? _lineExtensionAmountCurr;
 
-        private decimal _lineExtensionAmount;
+        private decimal? _lineExtensionAmount;
 
-        private decimal _lineExtensionAmountBeforeDiscount;
+        private decimal? _lineExtensionAmountBeforeDiscount;
 
-        private decimal _lineExtensionAmountTaxInclusiveCurr;
+        private decimal? _lineExtensionAmountTaxInclusiveCurr;
 
-        private decimal _lineExtensionAmountTaxInclusive;
+        private decimal? _lineExtensionAmountTaxInclusive;
 
-        private decimal _lineExtensionAmountTaxInclusiveBeforeDiscount;
+        private decimal? _lineExtensionAmountTaxInclusiveBeforeDiscount;
 
-        private decimal _lineExtensionTaxAmount;
+        private decimal? _lineExtensionTaxAmount;
 
-        private decimal _unitPrice;
+        private decimal? _unitPrice;
 
-        private decimal _unitPriceTaxInclusive;
+        private decimal? _unitPriceTaxInclusive;
 
         private ClassifiedTaxCategory _classifiedTaxCategory;
 
@@ -53,16 +52,21 @@ namespace ISDOCNet
 
         public InvoiceLine()
         {
-            this._extensions = new Extensions();
-            this._item = new Item();
-            this._vATNote = new Note();
-            this._note = new Note();
-            this._classifiedTaxCategory = new ClassifiedTaxCategory();
-            this._invoicedQuantity = new Quantity();
-            this._contractReference = new ContractLineReference();
-            this._originalDocumentReference = new OriginalDocumentLineReference();
-            this._deliveryNoteReference = new DeliveryNoteLineReference();
-            this._orderReference = new OrderLineReference();
+            //this._extensions = new Extensions();
+            //this._item = new Item();
+            //this._vATNote = new Note();
+            //this._note = new Note();
+            //this._classifiedTaxCategory = new ClassifiedTaxCategory();
+            //this._invoicedQuantity = new Quantity();
+            //this._contractReference = new ContractLineReference();
+            //this._originalDocumentReference = new OriginalDocumentLineReference();
+            //this._deliveryNoteReference = new DeliveryNoteLineReference();
+            //this._orderReference = new OrderLineReference();
+        }
+
+        public bool ShouldSerializeID()
+        {
+            return _id != null;
         }
 
         public string ID
@@ -77,6 +81,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeOrderReference()
+        {
+            return _orderReference != null;
+        }
+
         public OrderLineReference OrderReference
         {
             get
@@ -87,6 +96,11 @@ namespace ISDOCNet
             {
                 this._orderReference = value;
             }
+        }
+
+        public bool ShouldSerializeDeliveryNoteReference()
+        {
+            return _deliveryNoteReference != null;
         }
 
         public DeliveryNoteLineReference DeliveryNoteReference
@@ -101,6 +115,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeOriginalDocumentReference()
+        {
+            return _originalDocumentReference != null;
+        }
+
         public OriginalDocumentLineReference OriginalDocumentReference
         {
             get
@@ -111,6 +130,11 @@ namespace ISDOCNet
             {
                 this._originalDocumentReference = value;
             }
+        }
+
+        public bool ShouldSerializeContractReference()
+        {
+            return _contractReference != null;
         }
 
         public ContractLineReference ContractReference
@@ -125,6 +149,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeEgovClassifier()
+        {
+            return _egovClassifier != null;
+        }
+
         public string EgovClassifier
         {
             get
@@ -135,6 +164,11 @@ namespace ISDOCNet
             {
                 this._egovClassifier = value;
             }
+        }
+
+        public bool ShouldSerializeInvoicedQuantity()
+        {
+            return _invoicedQuantity != null;
         }
 
         public Quantity InvoicedQuantity
@@ -148,8 +182,12 @@ namespace ISDOCNet
                 this._invoicedQuantity = value;
             }
         }
+        public bool ShouldSerializeLineExtensionAmountCurr()
+        {
+            return _lineExtensionAmountCurr != null;
+        }
 
-        public decimal LineExtensionAmountCurr
+        public decimal? LineExtensionAmountCurr
         {
             get
             {
@@ -161,7 +199,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionAmount
+        public bool ShouldSerializeLineExtensionAmount()
+        {
+            return _lineExtensionAmount != null;
+        }
+
+        public decimal? LineExtensionAmount
         {
             get
             {
@@ -173,7 +216,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionAmountBeforeDiscount
+        public bool ShouldSerializeLineExtensionAmountBeforeDiscount()
+        {
+            return _lineExtensionAmountBeforeDiscount != null;
+        }
+
+        public decimal? LineExtensionAmountBeforeDiscount
         {
             get
             {
@@ -185,7 +233,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionAmountTaxInclusiveCurr
+        public bool ShouldSerializeLineExtensionAmountTaxInclusiveCurr()
+        {
+            return _lineExtensionAmountTaxInclusiveCurr != null;
+        }
+
+        public decimal? LineExtensionAmountTaxInclusiveCurr
         {
             get
             {
@@ -197,7 +250,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionAmountTaxInclusive
+        public bool ShouldSerializeLineExtensionAmountTaxInclusive()
+        {
+            return _lineExtensionAmountTaxInclusive != null;
+        }
+
+        public decimal? LineExtensionAmountTaxInclusive
         {
             get
             {
@@ -209,7 +267,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionAmountTaxInclusiveBeforeDiscount
+        public bool ShouldSerializeLineExtensionAmountTaxInclusiveBeforeDiscount()
+        {
+            return _lineExtensionAmountTaxInclusiveBeforeDiscount != null;
+        }
+
+        public decimal? LineExtensionAmountTaxInclusiveBeforeDiscount
         {
             get
             {
@@ -221,7 +284,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal LineExtensionTaxAmount
+        public bool ShouldSerializeLineExtensionTaxAmount()
+        {
+            return _lineExtensionTaxAmount != null;
+        }
+
+        public decimal? LineExtensionTaxAmount
         {
             get
             {
@@ -233,7 +301,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal UnitPrice
+        public bool ShouldSerializeUnitPrice()
+        {
+            return _unitPrice != null;
+        }
+
+        public decimal? UnitPrice
         {
             get
             {
@@ -245,7 +318,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal UnitPriceTaxInclusive
+        public bool ShouldSerializeUnitPriceTaxInclusive()
+        {
+            return _unitPriceTaxInclusive != null;
+        }
+
+        public decimal? UnitPriceTaxInclusive
         {
             get
             {
@@ -255,6 +333,11 @@ namespace ISDOCNet
             {
                 this._unitPriceTaxInclusive = value;
             }
+        }
+
+        public bool ShouldSerializeClassifiedTaxCategory()
+        {
+            return _classifiedTaxCategory != null;
         }
 
         public ClassifiedTaxCategory ClassifiedTaxCategory
@@ -269,6 +352,12 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeNote()
+        {
+            return _note != null;
+        }
+
+
         public Note Note
         {
             get
@@ -279,6 +368,11 @@ namespace ISDOCNet
             {
                 this._note = value;
             }
+        }
+
+        public bool ShouldSerializeVATNote()
+        {
+            return _vATNote != null;
         }
 
         public Note VATNote
@@ -293,6 +387,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeItem()
+        {
+            return _item != null;
+        }
+
         public Item Item
         {
             get
@@ -303,6 +402,11 @@ namespace ISDOCNet
             {
                 this._item = value;
             }
+        }
+
+        public bool ShouldSerializeExtensions()
+        {
+            return _extensions != null;
         }
 
         public Extensions Extensions

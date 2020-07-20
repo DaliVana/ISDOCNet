@@ -3,6 +3,7 @@ namespace ISDOCNet
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Xml;
     using System.Xml.Serialization;
 
@@ -11,7 +12,7 @@ namespace ISDOCNet
     {
 
         #region Private fields
-        private Document _document;
+        private DocumentType _document;
 
         private string _subDocument;
 
@@ -27,7 +28,7 @@ namespace ISDOCNet
 
         private string _uUID;
 
-        private bool _egovFlag;
+        private bool? _egovFlag;
 
         private string _iSDS_ID;
 
@@ -39,11 +40,11 @@ namespace ISDOCNet
 
         private string _issuingSystem;
 
-        private System.DateTime _issueDate;
+        private System.DateTime? _issueDate;
 
-        private System.DateTime _taxPointDate;
+        private System.DateTime? _taxPointDate;
 
-        private bool _vATApplicable;
+        private bool? _vATApplicable;
 
         private Note _electronicPossibilityAgreementReference;
 
@@ -53,17 +54,17 @@ namespace ISDOCNet
 
         private string _foreignCurrencyCode;
 
-        private decimal _currRate;
+        private decimal? _currRate;
 
-        private decimal _refCurrRate;
+        private decimal? _refCurrRate;
 
         private Extensions _extensions;
 
         private AccountingSupplierParty _accountingSupplierParty;
 
-        private SellerSupplierParty _sellerSupplierParty;
+        private AccountingCustomerParty _accountingCustomerParty;
 
-        private List<object> _items;
+        private SellerSupplierParty _sellerSupplierParty;
 
         private BuyerCustomerParty _buyerCustomerParty;
 
@@ -98,29 +99,28 @@ namespace ISDOCNet
 
         public Invoice()
         {
-            this._supplementsList = new List<Supplement>();
-            this._paymentMeans = new PaymentMeans();
-            this._legalMonetaryTotal = new LegalMonetaryTotal();
-            this._taxTotal = new TaxTotal();
-            this._taxedDeposits = new List<TaxedDeposit>();
-            this._nonTaxedDeposits = new List<NonTaxedDeposit>();
-            this._invoiceLines = new List<InvoiceLine>();
-            this._delivery = new Delivery();
-            this._contractReferences = new List<ContractReference>();
-            this._originalDocumentReferences = new List<OriginalDocumentReference>();
-            this._deliveryNoteReferences = new List<DeliveryNoteReference>();
-            this._orderReferences = new List<OrderReference>();
-            this._buyerCustomerParty = new BuyerCustomerParty();
-            this._items = new List<object>();
-            this._sellerSupplierParty = new SellerSupplierParty();
-            this._accountingSupplierParty = new AccountingSupplierParty();
-            this._extensions = new Extensions();
-            this._note = new Note();
-            this._electronicPossibilityAgreementReference = new Note();
-            this._egovClassifiers = new List<string>();
+            //this._supplementsList = new List<Supplement>();
+            //this._paymentMeans = new PaymentMeans();
+            //this._legalMonetaryTotal = new LegalMonetaryTotal();
+            //this._taxTotal = new TaxTotal();
+            //this._taxedDeposits = new List<TaxedDeposit>();
+            //this._nonTaxedDeposits = new List<NonTaxedDeposit>();
+            //this._invoiceLines = new List<InvoiceLine>();
+            //this._delivery = new Delivery();
+            //this._contractReferences = new List<ContractReference>();
+            //this._originalDocumentReferences = new List<OriginalDocumentReference>();
+            //this._deliveryNoteReferences = new List<DeliveryNoteReference>();
+            //this._orderReferences = new List<OrderReference>();
+            //this._buyerCustomerParty = new BuyerCustomerParty();
+            //this._sellerSupplierParty = new SellerSupplierParty();
+            //this._accountingSupplierParty = new AccountingSupplierParty();
+            //this._extensions = new Extensions();
+            //this._note = new Note();
+            //this._electronicPossibilityAgreementReference = new Note();
+            //this._egovClassifiers = new List<string>();
         }
-
-        public Document Document
+        
+        public DocumentType DocumentType
         {
             get
             {
@@ -130,6 +130,11 @@ namespace ISDOCNet
             {
                 this._document = value;
             }
+        }
+
+        public bool ShouldSerializeSubDocument()
+        {
+            return _subDocument != null;
         }
 
         public string SubDocument
@@ -144,6 +149,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeSubDocumentOrigin()
+        {
+            return _subDocumentOrigin != null;
+        }
+
         public string SubDocumentOrigin
         {
             get
@@ -154,6 +164,11 @@ namespace ISDOCNet
             {
                 this._subDocumentOrigin = value;
             }
+        }
+
+        public bool ShouldSerializeTargetConsolidator()
+        {
+            return _targetConsolidator != null;
         }
 
         public string TargetConsolidator
@@ -168,6 +183,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeClientOnTargetConsolidator()
+        {
+            return _clientOnTargetConsolidator != null;
+        }
+
         public string ClientOnTargetConsolidator
         {
             get
@@ -178,6 +198,11 @@ namespace ISDOCNet
             {
                 this._clientOnTargetConsolidator = value;
             }
+        }
+
+        public bool ShouldSerializeClientBankAccount()
+        {
+            return _clientBankAccount != null;
         }
 
         public string ClientBankAccount
@@ -192,6 +217,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeID()
+        {
+            return _id != null;
+        }
+
         public string ID
         {
             get
@@ -202,6 +232,11 @@ namespace ISDOCNet
             {
                 this._id = value;
             }
+        }
+
+        public bool ShouldSerializeUUID()
+        {
+            return _uUID != null;
         }
 
         public string UUID
@@ -216,7 +251,12 @@ namespace ISDOCNet
             }
         }
 
-        public bool EgovFlag
+        public bool ShouldSerializeEgovFlag()
+        {
+            return _egovFlag != null;
+        }
+
+        public bool? EgovFlag
         {
             get
             {
@@ -226,6 +266,11 @@ namespace ISDOCNet
             {
                 this._egovFlag = value;
             }
+        }
+
+        public bool ShouldSerializeISDS_ID()
+        {
+            return _iSDS_ID != null;
         }
 
         public string ISDS_ID
@@ -240,6 +285,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeFileReference()
+        {
+            return _fileReference != null;
+        }
+
         public string FileReference
         {
             get
@@ -250,6 +300,11 @@ namespace ISDOCNet
             {
                 this._fileReference = value;
             }
+        }
+
+        public bool ShouldSerializeReferenceNumber()
+        {
+            return _referenceNumber != null;
         }
 
         public string ReferenceNumber
@@ -264,6 +319,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeEgovClassifiers()
+        {
+            return _egovClassifiers != null && _egovClassifiers.Count > 0;
+        }
+
         public List<string> EgovClassifiers
         {
             get
@@ -274,6 +334,11 @@ namespace ISDOCNet
             {
                 this._egovClassifiers = value;
             }
+        }
+
+        public bool ShouldSerializeIssuingSystem()
+        {
+            return _issuingSystem != null;
         }
 
         public string IssuingSystem
@@ -288,7 +353,13 @@ namespace ISDOCNet
             }
         }
 
-        public System.DateTime IssueDate
+        public bool ShouldSerializeIssueDate()
+        {
+            return _issueDate != null;
+        }
+
+        [XmlElement(DataType = "date")]
+        public System.DateTime? IssueDate
         {
             get
             {
@@ -300,7 +371,13 @@ namespace ISDOCNet
             }
         }
 
-        public System.DateTime TaxPointDate
+        public bool ShouldSerializeTaxPointDate()
+        {
+            return _taxPointDate != null;
+        }
+
+        [XmlElement(DataType = "date")]
+        public System.DateTime? TaxPointDate
         {
             get
             {
@@ -312,7 +389,12 @@ namespace ISDOCNet
             }
         }
 
-        public bool VATApplicable
+        public bool ShouldSerializeVATApplicable()
+        {
+            return _vATApplicable != null;
+        }
+
+        public bool? VATApplicable
         {
             get
             {
@@ -322,6 +404,11 @@ namespace ISDOCNet
             {
                 this._vATApplicable = value;
             }
+        }
+
+        public bool ShouldSerializeElectronicPossibilityAgreementReference()
+        {
+            return _electronicPossibilityAgreementReference != null;
         }
 
         public Note ElectronicPossibilityAgreementReference
@@ -336,6 +423,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeNote()
+        {
+            return _note != null;
+        }
+
         public Note Note
         {
             get
@@ -346,6 +438,11 @@ namespace ISDOCNet
             {
                 this._note = value;
             }
+        }
+
+        public bool ShouldSerializeLocalCurrencyCode()
+        {
+            return _localCurrencyCode != null;
         }
 
         public string LocalCurrencyCode
@@ -360,6 +457,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeForeignCurrencyCode()
+        {
+            return _foreignCurrencyCode != null;
+        }
+
         public string ForeignCurrencyCode
         {
             get
@@ -372,7 +474,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal CurrRate
+        public bool ShouldSerializeCurrRate()
+        {
+            return _currRate != null;
+        }
+
+        public decimal? CurrRate
         {
             get
             {
@@ -384,7 +491,12 @@ namespace ISDOCNet
             }
         }
 
-        public decimal RefCurrRate
+        public bool ShouldSerializeRefCurrRate()
+        {
+            return _refCurrRate != null;
+        }
+
+        public decimal? RefCurrRate
         {
             get
             {
@@ -394,6 +506,11 @@ namespace ISDOCNet
             {
                 this._refCurrRate = value;
             }
+        }
+
+        public bool ShouldSerializeExtensions()
+        {
+            return _extensions != null;
         }
 
         public Extensions Extensions
@@ -408,6 +525,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeAccountingSupplierParty()
+        {
+            return _accountingSupplierParty != null;
+        }
+
         public AccountingSupplierParty AccountingSupplierParty
         {
             get
@@ -418,6 +540,11 @@ namespace ISDOCNet
             {
                 this._accountingSupplierParty = value;
             }
+        }
+
+        public bool ShouldSerializeSellerSupplierParty()
+        {
+            return _sellerSupplierParty != null;
         }
 
         public SellerSupplierParty SellerSupplierParty
@@ -432,16 +559,26 @@ namespace ISDOCNet
             }
         }
 
-        public List<object> Items
+        public bool ShouldSerializeAccountingCustomerParty()
+        {
+            return _accountingSupplierParty != null;
+        }
+
+        public AccountingCustomerParty AccountingCustomerParty
         {
             get
             {
-                return this._items;
+                return this._accountingCustomerParty;
             }
             set
             {
-                this._items = value;
+                this._accountingCustomerParty = value;
             }
+        }
+
+        public bool ShouldSerializeBuyerCustomerParty()
+        {
+            return _buyerCustomerParty != null;
         }
 
         public BuyerCustomerParty BuyerCustomerParty
@@ -456,6 +593,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeOrderReferences()
+        {
+            return _orderReferences != null && _originalDocumentReferences.Any();
+        }
+
         public List<OrderReference> OrderReferences
         {
             get
@@ -466,6 +608,11 @@ namespace ISDOCNet
             {
                 this._orderReferences = value;
             }
+        }
+
+        public bool ShouldSerializeDeliveryNoteReferences()
+        {
+            return _deliveryNoteReferences != null && _deliveryNoteReferences.Any();
         }
 
         public List<DeliveryNoteReference> DeliveryNoteReferences
@@ -480,6 +627,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeOriginalDocumentReferences()
+        {
+            return _originalDocumentReferences != null && _originalDocumentReferences.Any();
+        }
+
         public List<OriginalDocumentReference> OriginalDocumentReferences
         {
             get
@@ -490,6 +642,11 @@ namespace ISDOCNet
             {
                 this._originalDocumentReferences = value;
             }
+        }
+
+        public bool ShouldSerializeContractReferences()
+        {
+            return _contractReferences != null && _contractReferences.Any();
         }
 
         public List<ContractReference> ContractReferences
@@ -504,6 +661,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeDelivery()
+        {
+            return _delivery != null;
+        }
+
         public Delivery Delivery
         {
             get
@@ -514,6 +676,11 @@ namespace ISDOCNet
             {
                 this._delivery = value;
             }
+        }
+
+        public bool ShouldSerializeInvoiceLines()
+        {
+            return _invoiceLines != null && _invoiceLines.Any();
         }
 
         public List<InvoiceLine> InvoiceLines
@@ -528,6 +695,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeNonTaxedDeposits()
+        {
+            return _nonTaxedDeposits != null && _nonTaxedDeposits.Any();
+        }
+
         public List<NonTaxedDeposit> NonTaxedDeposits
         {
             get
@@ -538,6 +710,11 @@ namespace ISDOCNet
             {
                 this._nonTaxedDeposits = value;
             }
+        }
+
+        public bool ShouldSerializeTaxedDeposits()
+        {
+            return _taxedDeposits != null && _taxedDeposits.Any();
         }
 
         public List<TaxedDeposit> TaxedDeposits
@@ -552,6 +729,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeTaxTotal()
+        {
+            return _taxTotal != null;
+        }
+
         public TaxTotal TaxTotal
         {
             get
@@ -562,6 +744,11 @@ namespace ISDOCNet
             {
                 this._taxTotal = value;
             }
+        }
+
+        public bool ShouldSerializeLegalMonetaryTotal()
+        {
+            return _legalMonetaryTotal != null;
         }
 
         public LegalMonetaryTotal LegalMonetaryTotal
@@ -576,6 +763,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializePaymentMeans()
+        {
+            return _paymentMeans != null;
+        }
+
         public PaymentMeans PaymentMeans
         {
             get
@@ -586,6 +778,11 @@ namespace ISDOCNet
             {
                 this._paymentMeans = value;
             }
+        }
+
+        public bool ShouldSerializeSupplementsList()
+        {
+            return _supplementsList != null && _supplementsList.Any();
         }
 
         public List<Supplement> SupplementsList
@@ -613,6 +810,7 @@ namespace ISDOCNet
             }
         }
 
+        [XmlAttribute]
         public string version
         {
             get
@@ -684,7 +882,7 @@ namespace ISDOCNet
             XmlRootAttribute xRoot = new XmlRootAttribute();
             xRoot.ElementName = "Invoice";
             xRoot.Namespace = @"http://isdoc.cz/namespace/2013";
-            xRoot.IsNullable = true;
+            xRoot.IsNullable = true;            
             XmlSerializer s = new XmlSerializer(typeof(Invoice), xRoot);
             return s;
         }

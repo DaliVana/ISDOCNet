@@ -2,7 +2,6 @@ namespace ISDOCNet
 {
     using System.Collections.Generic;
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class Party
     {
 
@@ -22,12 +21,17 @@ namespace ISDOCNet
 
         public Party()
         {
-            this._contact = new Contact();
-            this._registerIdentification = new RegisterIdentification();
-            this._partyTaxScheme = new List<PartyTaxScheme>();
-            this._postalAddress = new PostalAddress();
-            this._partyName = new PartyName();
-            this._partyIdentification = new PartyIdentification();
+            //this._contact = new Contact();
+            //this._registerIdentification = new RegisterIdentification();
+            //this._partyTaxScheme = new List<PartyTaxScheme>();
+            //this._postalAddress = new PostalAddress();
+            //this._partyName = new PartyName();
+            //this._partyIdentification = new PartyIdentification();
+        }
+
+        public bool ShouldSerializePartyIdentification()
+        {
+            return _partyIdentification != null;
         }
 
         public PartyIdentification PartyIdentification
@@ -42,6 +46,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializePartyName()
+        {
+            return _partyName != null;
+        }
+
         public PartyName PartyName
         {
             get
@@ -52,6 +61,11 @@ namespace ISDOCNet
             {
                 this._partyName = value;
             }
+        }
+
+        public bool ShouldSerializePostalAddress()
+        {
+            return _postalAddress != null;
         }
 
         public PostalAddress PostalAddress
@@ -66,6 +80,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializePartyTaxScheme()
+        {
+            return _partyTaxScheme != null && _partyTaxScheme.Count > 0;
+        }
+
         public List<PartyTaxScheme> PartyTaxScheme
         {
             get
@@ -78,6 +97,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeRegisterIdentification()
+        {
+            return _registerIdentification != null && _registerIdentification.Items != null;
+        }
+
         public RegisterIdentification RegisterIdentification
         {
             get
@@ -88,6 +112,11 @@ namespace ISDOCNet
             {
                 this._registerIdentification = value;
             }
+        }
+
+        public bool ShouldSerializeContact()
+        {
+            return _contact != null;
         }
 
         public Contact Contact

@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace ISDOCNet
 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -9,9 +11,9 @@ namespace ISDOCNet
 
         private string _externalOrderID;
 
-        private System.DateTime _issueDate;
+        private System.DateTime? _issueDate;
 
-        private System.DateTime _externalOrderIssueDate;
+        private System.DateTime? _externalOrderIssueDate;
 
         private string _uUID;
 
@@ -48,7 +50,13 @@ namespace ISDOCNet
             }
         }
 
-        public System.DateTime IssueDate
+        public bool ShouldSerializeIssueDate()
+        {
+            return _issueDate != null;
+        }
+
+        [XmlElement(DataType = "date")]
+        public System.DateTime? IssueDate
         {
             get
             {
@@ -60,7 +68,13 @@ namespace ISDOCNet
             }
         }
 
-        public System.DateTime ExternalOrderIssueDate
+        public bool ShouldSerializeExternalOrderIssueDate()
+        {
+            return _externalOrderIssueDate != null;
+        }
+
+        [XmlElement(DataType = "date")]
+        public System.DateTime? ExternalOrderIssueDate
         {
             get
             {

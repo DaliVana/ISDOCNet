@@ -24,12 +24,17 @@ namespace ISDOCNet
 
         public Item()
         {
-            this._storeBatches = new List<StoreBatch>();
-            this._buyersItemIdentification = new BuyersItemIdentification();
-            this._tertiarySellersItemIdentification = new TertiarySellersItemIdentification();
-            this._secondarySellersItemIdentification = new SecondarySellersItemIdentification();
-            this._sellersItemIdentification = new SellersItemIdentification();
-            this._catalogueItemIdentification = new CatalogueItemIdentification();
+            //this._storeBatches = new List<StoreBatch>();
+            //this._buyersItemIdentification = new BuyersItemIdentification();
+            //this._tertiarySellersItemIdentification = new TertiarySellersItemIdentification();
+            //this._secondarySellersItemIdentification = new SecondarySellersItemIdentification();
+            //this._sellersItemIdentification = new SellersItemIdentification();
+            //this._catalogueItemIdentification = new CatalogueItemIdentification();
+        }
+
+        public bool ShouldSerializeDescription()
+        {
+            return _description != null;
         }
 
         public string Description
@@ -44,6 +49,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeCatalogueItemIdentification()
+        {
+            return _catalogueItemIdentification != null;
+        }
+
         public CatalogueItemIdentification CatalogueItemIdentification
         {
             get
@@ -54,6 +64,10 @@ namespace ISDOCNet
             {
                 this._catalogueItemIdentification = value;
             }
+        }
+        public bool ShouldSerializeSellersItemIdentification()
+        {
+            return _sellersItemIdentification != null;
         }
 
         public SellersItemIdentification SellersItemIdentification
@@ -67,6 +81,10 @@ namespace ISDOCNet
                 this._sellersItemIdentification = value;
             }
         }
+        public bool ShouldSerializeSecondarySellersItemIdentification()
+        {
+            return _secondarySellersItemIdentification != null;
+        }
 
         public SecondarySellersItemIdentification SecondarySellersItemIdentification
         {
@@ -78,6 +96,10 @@ namespace ISDOCNet
             {
                 this._secondarySellersItemIdentification = value;
             }
+        }
+        public bool ShouldSerializeTertiarySellersItemIdentification()
+        {
+            return _tertiarySellersItemIdentification != null;
         }
 
         public TertiarySellersItemIdentification TertiarySellersItemIdentification
@@ -92,6 +114,11 @@ namespace ISDOCNet
             }
         }
 
+        public bool ShouldSerializeBuyersItemIdentification()
+        {
+            return _buyersItemIdentification != null;
+        }
+
         public BuyersItemIdentification BuyersItemIdentification
         {
             get
@@ -102,6 +129,11 @@ namespace ISDOCNet
             {
                 this._buyersItemIdentification = value;
             }
+        }
+
+        public bool ShouldSerializeStoreBatches()
+        {
+            return _storeBatches != null;
         }
 
         public List<StoreBatch> StoreBatches

@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace ISDOCNet
 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -7,7 +9,7 @@ namespace ISDOCNet
         #region Private fields
         private string _id;
 
-        private System.DateTime _issueDate;
+        private System.DateTime? _issueDate;
 
         private string _uUID;
 
@@ -26,7 +28,13 @@ namespace ISDOCNet
             }
         }
 
-        public System.DateTime IssueDate
+        public bool ShouldSerializeIssueDate()
+        {
+            return _issueDate != null;
+        }
+
+        [XmlElement(DataType = "date")]
+        public System.DateTime? IssueDate
         {
             get
             {

@@ -13,4 +13,10 @@
     <ProjectReference Include="..\ISDOCNet\ISDOCNet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="input.isdoc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
