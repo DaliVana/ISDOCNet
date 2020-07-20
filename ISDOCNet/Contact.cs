@@ -12,6 +12,18 @@ namespace ISDOCNet
         private string _electronicMail;
         #endregion
 
+        public Contact()
+        {
+
+        }
+
+        public Contact(string name, string telephone, string electronicMail)
+        {
+            _name = name;
+            _telephone = telephone;
+            _electronicMail = electronicMail;
+        }
+
         public string Name
         {
             get

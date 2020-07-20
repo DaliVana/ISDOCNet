@@ -3,6 +3,17 @@ namespace ISDOCNet
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class PartyIdentification
     {
+        public PartyIdentification()
+        {
+
+        }
+
+        public PartyIdentification(string userID, string catalogFirmIdentification, string iD)
+        {
+            _userID = userID;
+            _catalogFirmIdentification = catalogFirmIdentification;
+            _id = iD;
+        }
 
         #region Private fields
         private string _userID;

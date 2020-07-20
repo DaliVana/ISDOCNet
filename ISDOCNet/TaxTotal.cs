@@ -2,13 +2,14 @@ namespace ISDOCNet
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Xml.Serialization;
 
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class TaxTotal
     {
 
         #region Private fields
-        private TaxSubTotal _taxSubTotal;
+        private List<TaxSubTotal> _taxSubTotal;
 
         private decimal? _taxAmountCurr;
 
@@ -22,10 +23,11 @@ namespace ISDOCNet
 
         public bool ShouldSerializeTaxSubTotal()
         {
-            return _taxSubTotal != null;
+            return _taxSubTotal != null && _taxSubTotal.Any();
         }
 
-        public TaxSubTotal TaxSubTotal
+        [XmlElement]
+        public List<TaxSubTotal> TaxSubTotal
         {
             get
             {

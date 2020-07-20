@@ -6,15 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="input.isdoc" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.Console" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ISDOCNet\ISDOCNet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="input.isdoc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

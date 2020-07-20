@@ -5,6 +5,17 @@ namespace ISDOCNet
 
     public partial class Quantity
     {
+        public Quantity()
+        {
+
+        }
+
+        public Quantity(string unitCode, decimal value)
+        {
+            _unitCode = unitCode;
+            _value = value;
+        }
+
 
         #region Private fields
         private string _unitCode;

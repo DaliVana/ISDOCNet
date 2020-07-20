@@ -1,6 +1,5 @@
 namespace ISDOCNet
 {
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     public partial class Country
     {
 
@@ -32,6 +31,14 @@ namespace ISDOCNet
             {
                 this._name = value;
             }
+        }
+
+        public static Country CzechRepulic()
+        {
+            var result = new Country();
+            result.IdentificationCode = "CZ";
+            result.Name = "Czech Republic";
+            return result;
         }
     }
 }

@@ -21,6 +21,15 @@ namespace ISDOCNet
             this._country = new Country();
         }
 
+        public PostalAddress(Country country, string cityName, string streetName, string buildingNumber, string postalZone)
+        {
+            _country = country;
+            _cityName = cityName;
+            _streetName = streetName;
+            _buildingNumber = buildingNumber;
+            _postalZone = postalZone;
+        }
+
         public string StreetName
         {
             get

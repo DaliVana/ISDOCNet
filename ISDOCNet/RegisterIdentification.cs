@@ -4,6 +4,16 @@ namespace ISDOCNet
     public partial class RegisterIdentification
     {
 
+        public RegisterIdentification()
+        {
+
+        }
+
+        public RegisterIdentification(string preformatted)
+        {
+            _preformatted = preformatted;
+        }
+
         #region Private fields
         private string _preformatted;
 
