@@ -111,50 +111,33 @@ namespace ISDOCNet.Console.Sample
             result.TaxTotal = new TaxTotal();
             result.TaxTotal.TaxAmount = 0;
             result.TaxTotal.TaxSubTotal = new List<TaxSubTotal>();
-            //foreach (var taxGroup in invoice.InvoiceItems.GroupBy(p => p.TaxVat))
-            //{
-            //    var taxSubTotal = new TaxSubTotal();
-            //    taxSubTotal.TaxableAmount = taxGroup.Sum(p => p.Price);
-            //    taxSubTotal.TaxInclusiveAmount = taxGroup.Sum(p => p.PriceVAT);
-            //    taxSubTotal.TaxAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.TaxableAmount;
-            //    if (taxGroup.Key.Value > 0)
-            //    {
-            //        taxSubTotal.TaxCategory = new TaxCategory();
-            //        taxSubTotal.TaxCategory.VATApplicable = true;
-            //        taxSubTotal.TaxCategory.Percent = taxGroup.Key.Value;
-            //    }
-            //    else
-            //    {
-            //        taxSubTotal.TaxCategory = new TaxCategory();
-            //        taxSubTotal.TaxCategory.VATApplicable = false;
-            //        taxSubTotal.TaxCategory.Percent = 0;
-            //    }
+            foreach (var taxGroup in result.InvoiceLines.GroupBy(p => p.ClassifiedTaxCategory.Percent)) 
+            {
+                var taxSubTotal = new TaxSubTotal();
+                taxSubTotal.TaxableAmount = taxGroup.Sum(p => p.LineExtensionAmount);
+                taxSubTotal.TaxInclusiveAmount = taxGroup.Sum(p => p.LineExtensionAmountTaxInclusive);
+                taxSubTotal.TaxAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.TaxableAmount;
+                if (taxGroup.Key.Value > 0)
+                {
+                    taxSubTotal.TaxCategory = new TaxCategory();
+                    taxSubTotal.TaxCategory.VATApplicable = true;
+                    taxSubTotal.TaxCategory.Percent = taxGroup.Key.Value;
+                }
+                else
+                {
+                    taxSubTotal.TaxCategory = new TaxCategory();
+                    taxSubTotal.TaxCategory.VATApplicable = false;
+                    taxSubTotal.TaxCategory.Percent = 0;
+                }
 
-            //    taxSubTotal.AlreadyClaimedTaxableAmount = 0;
-            //    taxSubTotal.AlreadyClaimedTaxAmount = 0;
-            //    taxSubTotal.AlreadyClaimedTaxInclusiveAmount = 0;
-            //    taxSubTotal.DifferenceTaxableAmount = taxSubTotal.TaxableAmount - taxSubTotal.AlreadyClaimedTaxableAmount;
-            //    taxSubTotal.DifferenceTaxAmount = taxSubTotal.TaxAmount - taxSubTotal.AlreadyClaimedTaxAmount;
-            //    taxSubTotal.DifferenceTaxInclusiveAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.AlreadyClaimedTaxInclusiveAmount;
-            //    result.TaxTotal.TaxSubTotal.Add(taxSubTotal);
-            //}
-
-            var taxSubTotal = new TaxSubTotal();
-            taxSubTotal.TaxableAmount = 100;
-            taxSubTotal.TaxInclusiveAmount = 121;
-            taxSubTotal.TaxAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.TaxableAmount;
-
-            taxSubTotal.TaxCategory = new TaxCategory();
-            taxSubTotal.TaxCategory.VATApplicable = true;
-            taxSubTotal.TaxCategory.Percent = 21;
-
-            taxSubTotal.AlreadyClaimedTaxableAmount = 0;
-            taxSubTotal.AlreadyClaimedTaxAmount = 0;
-            taxSubTotal.AlreadyClaimedTaxInclusiveAmount = 0;
-            taxSubTotal.DifferenceTaxableAmount = taxSubTotal.TaxableAmount - taxSubTotal.AlreadyClaimedTaxableAmount;
-            taxSubTotal.DifferenceTaxAmount = taxSubTotal.TaxAmount - taxSubTotal.AlreadyClaimedTaxAmount;
-            taxSubTotal.DifferenceTaxInclusiveAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.AlreadyClaimedTaxInclusiveAmount;
-            result.TaxTotal.TaxSubTotal.Add(taxSubTotal);
+                taxSubTotal.AlreadyClaimedTaxableAmount = 0;
+                taxSubTotal.AlreadyClaimedTaxAmount = 0;
+                taxSubTotal.AlreadyClaimedTaxInclusiveAmount = 0;
+                taxSubTotal.DifferenceTaxableAmount = taxSubTotal.TaxableAmount - taxSubTotal.AlreadyClaimedTaxableAmount;
+                taxSubTotal.DifferenceTaxAmount = taxSubTotal.TaxAmount - taxSubTotal.AlreadyClaimedTaxAmount;
+                taxSubTotal.DifferenceTaxInclusiveAmount = taxSubTotal.TaxInclusiveAmount - taxSubTotal.AlreadyClaimedTaxInclusiveAmount;
+                result.TaxTotal.TaxSubTotal.Add(taxSubTotal);
+            }
 
             result.LegalMonetaryTotal = new LegalMonetaryTotal();
             result.LegalMonetaryTotal.TaxExclusiveAmount = result.InvoiceLines.Sum(p => p.LineExtensionAmount);
