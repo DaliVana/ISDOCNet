@@ -6,8 +6,9 @@
         {
             var filePath = @"input.isdoc";
             var fileSavePath = @"output.isdoc";
-            var stream = new System.IO.FileStream(filePath, System.IO.FileMode.Open);
-            var invoice = ISDOCNet.Invoice.Load(stream);
+            //var stream = new System.IO.FileStream(filePath, System.IO.FileMode.Open);
+            //var invoice = ISDOCNet.Invoice.Load(stream);
+            var invoice = Sample.SimpleInvoiceVat.Create();
             invoice.Save(fileSavePath);
         }
     }
